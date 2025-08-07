@@ -1,11 +1,13 @@
-def factorial(n):
-    if n == 0 or n == 1:
-        return 1
-    else:
-        return n * factorial(n - 1)
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                # Swap the elements
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
 
-num = int(input("Enter a number: "))
-if num < 0:
-    print("Factorial is not defined for negative numbers.")
-else:
-    print(f"Factorial of {num} is {factorial(num)}")
+# Example usage
+numbers = [5, 2, 9, 1]
+sorted_numbers = bubble_sort(numbers)
+print("Sorted list:", sorted_numbers)
