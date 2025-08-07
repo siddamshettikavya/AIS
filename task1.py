@@ -1,11 +1,23 @@
-def find_max_of_three(numbers):
-    """Return the maximum element from a list of 3 numbers."""
-    return max(numbers)
+# Recursive method
+def factorial_recursive(n):
+    if n == 0 or n == 1:
+        return 1
+    return n * factorial_recursive(n - 1)
 
-if __name__ == "__main__":
-    nums = []
-    for i in range(3):
-        num = float(input(f"Enter number {i+1}: "))
-        nums.append(num)
-    maximum = find_max_of_three(nums)
-    print(f"The maximum element is: {maximum}")
+# Iterative method
+def factorial_iterative(n):
+    result = 1
+    for i in range(2, n + 1):
+        result *= i
+    return result
+
+# Built-in method
+import math
+def factorial_builtin(n):
+    return math.factorial(n)
+
+# Example usage
+num = 5
+print("Recursive:", factorial_recursive(num))
+print("Iterative:", factorial_iterative(num))
+print("Built-in :", factorial_builtin(num))
