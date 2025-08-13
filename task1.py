@@ -10,14 +10,13 @@ def factorial_iterative(n):
     for i in range(2, n + 1):
         result *= i
     return result
-
 # Built-in method
 import math
 def factorial_builtin(n):
     return math.factorial(n)
 
-# Example usage
 num = 5
 print("Recursive:", factorial_recursive(num))
 print("Iterative:", factorial_iterative(num))
 print("Built-in :", factorial_builtin(num))
+
