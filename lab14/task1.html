@@ -1,0 +1,304 @@
+task 1.  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIDDAM SHETTI KAVYA| Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+
+    :root {
+      --primary: #4a90e2;
+      --accent: #ffb74d;
+      --bg: #f4f7fb;
+      --text: #222;
+      --light-blue: #e9f3ff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: var(--text);
+      background-color: var(--bg);
+    }
+
+    /* ===== Header ===== */
+    header {
+      background: linear-gradient(135deg, var(--primary), #6ab4ff);
+      color: #fff;
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      opacity: 0.9;
+    }
+
+    /* ===== Navigation ===== */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      background: #357ab7;
+      padding: 0.8rem 0;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* ===== Main Container ===== */
+    main {
+      max-width: 1000px;
+      margin: 2.5rem auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      padding: 2.5rem;
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    section:last-child {
+      margin-bottom: 0;
+    }
+
+    h2 {
+      color: var(--primary);
+      border-left: 5px solid var(--accent);
+      padding-left: 10px;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ===== About Section ===== */
+    #about p {
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    /* ===== Projects Section ===== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background-color: var(--light-blue);
+      border-left: 5px solid var(--primary);
+      padding: 1.2rem;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    .project-card h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ===== Contact Section ===== */
+    .contact-details {
+      background-color: var(--light-blue);
+      border-left: 5px solid var(--primary);
+      padding: 15px 20px;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-details p {
+      margin: 8px 0;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      background: #fff;
+      border: 2px solid var(--primary);
+      border-radius: 30px;
+      padding: 8px 14px;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    /* ===== Button ===== */
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.6rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      background-color: #357ab7;
+      transform: translateY(-3px);
+    }
+
+    footer {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 1.2rem;
+      font-size: 0.95rem;
+      margin-top: 2rem;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      main {
+        padding: 1.5rem;
+      }
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>SIDDAM SHETTI KAVYA</h1>
+    <p>Web Developer | Creative Thinker | Tech Enthusiast</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+    <!-- About Section -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        Hello! I'm <strong>SIDDAM SHETTI KAVYA</strong>, a web developer passionate about building modern,
+        responsive, and visually appealing web applications. I enjoy blending creativity with logic to create
+        seamless user experiences.
+      </p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>Portfolio Website</h3>
+          <p>A responsive portfolio website to showcase personal achievements and skills.</p>
+        </div>
+        <div class="project-card">
+          <h3>Data Dashboard</h3>
+          <p>An interactive data visualization dashboard built with Python and Chart.js.</p>
+        </div>
+        <div class="project-card">
+          <h3>College Report System</h3>
+          <p>A real-time web app for classroom issue reporting and IT department tracking.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact</h2>
+
+      <div class="contact-details">
+        <p><i class="fa-solid fa-envelope"></i> <strong>Email:</strong> siddamshettikavya@gmail.com</p>
+        <p><i class="fa-solid fa-phone"></i> <strong>Phone:</strong> +91 9182267124</p>
+        <p><i class="fa-solid fa-location-dot"></i> <strong>Location:</strong> Warangal, Telangana, India</p>
+      </div>
+
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/kavya-siddamshetti-41633932a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/siddamshettikavya/AIS" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="c:\Users\S.kavya\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\LocalState\sessions\029AC6B10CE3189D5DA2A55F5258AA28A355055E\transfers\2025-41\WhatsApp Image 2025-10-09 at 8.37.36 PM.jpeg" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+      </div>
+
+      <button class="btn" onclick="showAlert()">Click Me</button>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 SIDDAM SHETTI KAVYA. All Rights Reserved.
+  </footer>
+
+  <script>
+    // Alert function for button click
+    function showAlert() {
+      alert("Thank you for connecting with me!");
+    }
+  </script>
+</body>
+</html>
