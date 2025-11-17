@@ -1,0 +1,46 @@
+-- Create tables
+CREATE TABLE Patients (
+    PatientID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Age INT,
+    Gender VARCHAR(10)
+);
+
+CREATE TABLE Services (
+    ServiceID INT PRIMARY KEY,
+    ServiceName VARCHAR(100),
+    Cost DECIMAL(10,2)
+);
+
+CREATE TABLE Bills (
+    BillID INT PRIMARY KEY,
+    PatientID INT,
+    ServiceID INT,
+    Date DATE,
+    FOREIGN KEY (PatientID) REFERENCES Patients(PatientID),
+    FOREIGN KEY (ServiceID) REFERENCES Services(ServiceID)
+);
+
+-- Insert sample data
+INSERT INTO Patients VALUES (1, 'John Doe', 30, 'Male');
+INSERT INTO Patients VALUES (2, 'Jane Smith', 25, 'Female');
+
+INSERT INTO Services VALUES (1, 'X-Ray', 100.00);
+INSERT INTO Services VALUES (2, 'Blood Test', 50.00);
+INSERT INTO Services VALUES (3, 'MRI', 500.00);
+
+INSERT INTO Bills VALUES (1, 1, 1, '2024-06-01');
+INSERT INTO Bills VALUES (2, 1, 2, '2024-06-01');
+INSERT INTO Bills VALUES (3, 2, 3, '2024-06-02');
+
+-- Query to calculate total bill for each patient
+SELECT 
+    p.PatientID,
+    p.Name,
+    SUM(s.Cost) AS TotalBill
+FROM 
+    Patients p
+    JOIN Bills b ON p.PatientID = b.PatientID
+    JOIN Services s ON b.ServiceID = s.ServiceID
+GROUP BY 
+    p.PatientID, p.Name;

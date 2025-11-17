@@ -1,0 +1,61 @@
+-- Design Hospital Billing Database
+
+-- Table: Patients
+CREATE TABLE Patients (
+    patient_id INTEGER PRIMARY KEY,
+    name VARCHAR(100),
+    age INTEGER,
+    gender VARCHAR(10)
+);
+
+-- Table: Services
+CREATE TABLE Services (
+    service_id INTEGER PRIMARY KEY,
+    service_name VARCHAR(100),
+    cost DECIMAL(10,2)
+);
+
+-- Table: Bills
+CREATE TABLE Bills (
+    bill_id INTEGER PRIMARY KEY,
+    patient_id INTEGER,
+    service_id INTEGER,
+    quantity INTEGER,
+    bill_date DATE,
+    FOREIGN KEY(patient_id) REFERENCES Patients(patient_id),
+    FOREIGN KEY(service_id) REFERENCES Services(service_id)
+);
+
+-- Insert Data into Patients
+INSERT INTO Patients (patient_id, name, age, gender) VALUES
+(1, 'Alice Johnson', 34, 'F'),
+(2, 'Bob Smith', 47, 'M'),
+(3, 'Charlie Lee', 29, 'M');
+
+-- Insert Data into Services
+INSERT INTO Services (service_id, service_name, cost) VALUES
+(1, 'X-Ray', 200.00),
+(2, 'Blood Test', 75.00),
+(3, 'MRI Scan', 1200.00),
+(4, 'Consultation', 150.00);
+
+-- Insert Data into Bills
+INSERT INTO Bills (bill_id, patient_id, service_id, quantity, bill_date) VALUES
+(1, 1, 1, 1, '2024-06-01'),  -- Alice, X-Ray
+(2, 1, 2, 2, '2024-06-01'),  -- Alice, 2 Blood Tests
+(3, 2, 3, 1, '2024-06-02'),  -- Bob, MRI Scan
+(4, 2, 4, 1, '2024-06-02'),  -- Bob, Consultation
+(5, 3, 4, 2, '2024-06-03');  -- Charlie, 2 Consultations
+
+-- SQL query to calculate the total bill for each patient
+SELECT
+    p.patient_id,
+    p.name,
+    SUM(s.cost * b.quantity) AS total_bill
+FROM
+    Patients p
+    JOIN Bills b ON p.patient_id = b.patient_id
+    JOIN Services s ON b.service_id = s.service_id
+GROUP BY
+    p.patient_id, p.name;
+
